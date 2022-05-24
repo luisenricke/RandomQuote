@@ -3,6 +3,7 @@ package com.luisenricke.randomquote.ui.view
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.luisenricke.randomquote.databinding.ActivityMainBinding
 import com.luisenricke.randomquote.ui.viewmodel.QuoteViewModel
 
@@ -26,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         quoteViewModel.quoteModel.observe(this, { currentQuote ->
             binding.txtQuote.text = currentQuote.quote
             binding.txtAuthor.text = currentQuote.author
+        })
+
+        quoteViewModel.isLoading.observe(this, { isLoading ->
+            binding.progress.isVisible = isLoading
         })
 
     }
