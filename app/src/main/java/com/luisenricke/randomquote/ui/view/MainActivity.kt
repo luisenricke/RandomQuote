@@ -1,11 +1,10 @@
-package com.luisenricke.randomquote.view
+package com.luisenricke.randomquote.ui.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.luisenricke.randomquote.databinding.ActivityMainBinding
-import com.luisenricke.randomquote.viewmodel.QuoteViewModel
+import com.luisenricke.randomquote.ui.viewmodel.QuoteViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        quoteViewModel.onCreate()
+
         // Setting when the viewModel changes
         binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
 
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             binding.txtQuote.text = currentQuote.quote
             binding.txtAuthor.text = currentQuote.author
         })
-
 
     }
 

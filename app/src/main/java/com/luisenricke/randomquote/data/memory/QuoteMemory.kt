@@ -1,6 +1,8 @@
-package com.luisenricke.randomquote.model
+package com.luisenricke.randomquote.data.memory
 
-class QuoteProvider {
+import com.luisenricke.randomquote.data.model.QuoteModel
+
+class QuoteMemory {
     companion object {
 
         fun random(): QuoteModel {
