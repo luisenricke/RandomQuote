@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setting up when change the result of Observer
+        // Setting when the viewModel changes
         binding.viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
 
-        // Setting up what change the result of Observer
-        quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
+        // Setting what changes when updates the viewModel
+        quoteViewModel.quoteModel.observe(this, { currentQuote ->
             binding.txtQuote.text = currentQuote.quote
             binding.txtAuthor.text = currentQuote.author
         })
