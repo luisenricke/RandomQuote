@@ -1,15 +1,15 @@
 package com.luisenricke.randomquote.domain
 
-import com.luisenricke.randomquote.data.model.QuoteModel
-import com.luisenricke.randomquote.data.model.QuoteProvider
+import com.luisenricke.randomquote.data.QuoteRepository
+import com.luisenricke.randomquote.domain.model.Quote
 import javax.inject.Inject
 
 class GetRandomQuoteUseCase @Inject constructor(
-    private val provider: QuoteProvider
+    private val repository: QuoteRepository
 ) {
 
-    operator fun invoke(): QuoteModel? {
-        val quotes = provider.quotes
+    suspend operator fun invoke(): Quote? {
+        val quotes = repository.getAllQuotesFromDatabase()
         if (!quotes.isNullOrEmpty()) {
             val randomNumber = (quotes.indices).random()
             return quotes[randomNumber]
